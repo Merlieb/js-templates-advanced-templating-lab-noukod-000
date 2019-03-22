@@ -9,6 +9,37 @@
   </head>
   <body>
     <main id="main">
+      <script id="recipe-form" type="text/x-handlebars-template">
+        <div>
+          <label>Recipe Name:</label>
+          <input id="name" type="text" name="name"/>
+        </div>
+        <div>
+        <label>Recipe Description:</label>
+          <textarea id="description">
+          </textarea>
+        </div>
+        <div>
+          <label for="ingredients">ingredients</label></br>
+          {{#each ingredients }}
+            {{{this}}}
+          {{/each}}
+        </div>
+        <input type="submit"/>
+      </script>
+      <script id="recipe-details-partial">
+        <p id="recipeDescription">
+          {{ description }}
+        </p>
+        {{#each ingredients}}
+          {{ displayIngredient}}
+        {{/each}}
+      </script>
+      <script id="recipe-template" type="text/x-handlebars-template">
+        {{> recipeDetailsPartial}}
+        <header id="recipeName">{{ name }}</header>
+        <a href="#" onclick="displayEditForm()">Edit Recipe</a>
+      </script>
     </main>
     <script id="recipe-form-template" type="text/x-handlebars-template">
       {{>recipeFormPartial}}
